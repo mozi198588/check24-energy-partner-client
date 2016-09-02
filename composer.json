@@ -1,0 +1,24 @@
+{
+    "name": "check24/energy/partner/client",
+    "repositories": [
+        {
+            "packagist": false
+        }
+    ],
+    "require-dev": {
+    },
+    "require": {
+        "php": ">=5.3.3",
+        "ext-curl": "*",
+        "ext-json": "*"
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "autoload": {
+        "classmap": [
+            "src"
+        ]
+    }
+}
+
