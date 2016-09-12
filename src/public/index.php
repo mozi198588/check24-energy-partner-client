@@ -12,13 +12,18 @@
     $product = check24\energy\partner\client\client::PRODUCT_POWER;
     $style = 'default';
 
+    $presets = [];
+
+    // $presets['zipcode'] = 80636;
+    // $presets['totalconsumption'] = 4000;
+
     // Create instance of client to communicate with middleware
 
     $client = new check24\energy\partner\client\client($partner_id, $secret, $tracking_id);
 
     // Request page
 
-    $response = $client->handle($product, $style);
+    $response = $client->handle($product, $style, $presets);
 
     // Use helper for easy client side implementation
 

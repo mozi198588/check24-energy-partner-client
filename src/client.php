@@ -13,7 +13,7 @@
 
         const BASE_URL = 'https://partnerproxy.energie.check24.de/partner/';
         const COOKIE_PREFIX = 'C24_';
-        const CLIENT_VERSION = 1.0;
+        const CLIENT_VERSION = 1.1;
 
         const PRODUCT_POWER = 'strom';
         const PRODUCT_GAS = 'gas';
@@ -84,9 +84,10 @@
          *
          * @param string $product Product (@see self::PRODUCT_GAS, self::PRODUCT_POWER)
          * @param string $style Style
+         * @param array $presets Optional presets (zipcode, totalconsumption e.g.)
          * @return response
          */
-        public function handle($product, $style) {
+        public function handle($product, $style, array $presets = []) {
 
             if (!in_array($product, [self::PRODUCT_GAS, self::PRODUCT_POWER])) {
                 throw new \InvalidArgumentException('Invalid product "' . $product . '"');
@@ -99,7 +100,8 @@
             $ch = $this->create_curl_request(
                 self::BASE_URL,
                 $product,
-                $style
+                $style,
+                $presets
             );
 
             $http_response = curl_exec($ch);
@@ -137,9 +139,10 @@
          * @param string $url Url
          * @param string $product Product
          * @param string $style Style
+         * @param array $presets Presets
          * @return resource
          */
-        private function create_curl_request($url, $product, $style) {
+        private function create_curl_request($url, $product, $style, array $presets) {
 
             // Create curl
 
@@ -152,7 +155,7 @@
             curl_setopt(
                 $ch,
                 CURLOPT_POSTFIELDS,
-                json_encode($this->create_api_request_parameter($product, $style))
+                json_encode($this->create_api_request_parameter($product, $style, $presets))
             );
 
             return $ch;
@@ -164,9 +167,10 @@
          *
          * @param string $product Product
          * @param string $style Style
+         * @param array $presets Presets
          * @return array
          */
-        private function create_api_request_parameter($product, $style) {
+        private function create_api_request_parameter($product, $style, array $presets) {
 
             $request = [
 
@@ -182,7 +186,7 @@
                 'customer' => [
                     'ip' => $this->request->get_client_ip(),
                     'user_agent' => $this->request->get_user_agent(),
-                    'version' => self::CLIENT_VERSION
+                    'version' => self::CLIENT_VERSION,
                 ],
 
                 'request' => [
@@ -192,7 +196,8 @@
                     'get' => $_GET,
                     'post' => $_POST,
                     'cookies' => $this->get_clean_cookies(),
-                    'x_header' => $this->request->get_additional_x_header()
+                    'x_header' => $this->request->get_additional_x_header(),
+                    'presets' => $presets
                 ]
 
             ];

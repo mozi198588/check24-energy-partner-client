@@ -18,9 +18,14 @@ $tracking_id = '';
 $product = check24\energy\partner\client\client::PRODUCT_POWER;
 $style = 'default';
 
+$presets = [];
+
+$presets['zipcode'] = 80636;
+$presets['totalconsumption'] = 4000;
+
 $client = new check24\energy\partner\client\client($partner_id, $secret, $tracking_id);
 
-$response = $client->handle($product, $style);
+$response = $client->handle($product, $style, $presets);
 
 $helper = new check24\energy\partner\client\helper($response);
 $split = $helper->handle();
