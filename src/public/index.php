@@ -14,8 +14,11 @@
 
     $presets = [];
 
-    // $presets['zipcode'] = 80636;
-    // $presets['totalconsumption'] = 4000;
+    /*
+    $presets['zipcode'] = 80636;
+    $presets['totalconsumption'] = 4000;
+    $presets['calculate'] = 'yes';
+    */
 
     // Create instance of client to communicate with middleware
 

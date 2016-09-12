@@ -22,6 +22,7 @@ $presets = [];
 
 $presets['zipcode'] = 80636;
 $presets['totalconsumption'] = 4000;
+$presets['calculate'] = 'yes';
 
 $client = new check24\energy\partner\client\client($partner_id, $secret, $tracking_id);
 
