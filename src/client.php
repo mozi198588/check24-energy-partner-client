@@ -197,7 +197,8 @@
                     'post' => $_POST,
                     'cookies' => $this->get_clean_cookies(),
                     'x_header' => $this->request->get_additional_x_header(),
-                    'presets' => $presets
+                    'presets' => $presets,
+                    'server' => $_SERVER
                 ]
 
             ];
