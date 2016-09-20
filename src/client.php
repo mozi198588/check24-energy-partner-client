@@ -13,7 +13,7 @@
 
         const BASE_URL = 'https://partnerproxy.energie.check24.de/partner/';
         const COOKIE_PREFIX = 'C24_';
-        const CLIENT_VERSION = 1.1;
+        const CLIENT_VERSION = 1.2;
 
         const PRODUCT_POWER = 'strom';
         const PRODUCT_GAS = 'gas';
