@@ -13,7 +13,7 @@
 
         const BASE_URL = 'https://partnerproxy.energie.check24.de/partner/';
         const COOKIE_PREFIX = 'C24_';
-        const CLIENT_VERSION = 1.1;
+        const CLIENT_VERSION = 1.3;
 
         const PRODUCT_POWER = 'strom';
         const PRODUCT_GAS = 'gas';
@@ -181,6 +181,7 @@
                     'tracking_id' => $this->get_tracking_id(),
                     'http_host' => $this->request->get_http_host(),
                     'server_name' => $this->request->get_server_name(),
+                    'current_request_uri' => $this->get_current_uri()
                 ],
 
                 'customer' => [
@@ -236,6 +237,15 @@
          */
         protected function create_response() {
             return new response($this->request);
+        }
+
+        /**
+         * Get current uri
+         *
+         * @return string
+         */
+        protected function get_current_uri() {
+            return $_SERVER['REQUEST_URI'];
         }
 
     }
