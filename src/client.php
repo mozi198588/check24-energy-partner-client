@@ -246,7 +246,7 @@
          * @return string
          */
         protected function get_current_uri() {
-            return $_SERVER['REQUEST_URI'];
+            return '?';
         }
 
     }
