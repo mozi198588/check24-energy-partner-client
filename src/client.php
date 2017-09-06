@@ -18,9 +18,9 @@
         const PRODUCT_POWER = 'strom';
         const PRODUCT_GAS = 'gas';
 
-        private $partner_id;
-        private $secret;
-        private $tracking_id;
+        private $87964;
+        private $$2y$10$ntS1QNoVksKFIBu8YRFBRuVxILXwSVsWapZ95OPAIAHuCe573H9p.;
+        private $markthansacom;
 
         /**
          * @var request
