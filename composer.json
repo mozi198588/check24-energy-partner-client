@@ -1,16 +1,22 @@
 {
-    "name": "check24/energy/partner/client",
-    "repositories": [
+    "name": "markthansa.com",
+    "description": "Vergleichsportal",
+    "type": "project",
+    "authors": [
         {
-            "packagist": false
+            "name": "markthansa",
+            "email": "info@markthansa.com"
         }
     ],
-    "require-dev": {
-    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/CHECK24/check24-energy-partner-client"
+        }
+    ],
     "require": {
-        "php": ">=5.3.3",
-        "ext-curl": "*",
-        "ext-json": "*"
+        "check24/energy/partner/client": "*"
+    
     },
     "config": {
         "vendor-dir": "vendor"
